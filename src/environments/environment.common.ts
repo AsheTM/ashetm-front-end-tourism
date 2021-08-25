@@ -1,6 +1,11 @@
 import { TEnvironmentConfigurationCore, TEnvironmentConfigurationShared } from './environment.type';
 
 
-export const environmentCommonConfigurationCore: TEnvironmentConfigurationCore   = {};
+export const environmentCommonConfigurationCore:    TEnvironmentConfigurationCore   = {};
 
-export const environmentCommonConfigurationShared: TEnvironmentConfigurationShared = {};
+export const environmentCommonConfigurationShared:  TEnvironmentConfigurationShared = {
+  root:     {},
+  feature:  {
+    home: {}
+  }
+};

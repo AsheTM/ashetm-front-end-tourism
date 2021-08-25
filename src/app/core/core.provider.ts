@@ -2,11 +2,11 @@ import { InjectionToken } from '@angular/core';
 
 
 namespace Provider {
-    export const SAMPLE:    InjectionToken<any> = new InjectionToken<any>('CORE_PROVIDER_SAMPLE');
-    
-    export namespace Root {
-        export const SAMPLE:    InjectionToken<any> = new InjectionToken<any>('CORE_PROVIDER_ROOT_SAMPLE');
-    }
+  export const SAMPLE:    InjectionToken<any> = new InjectionToken<any>('CORE_PROVIDER_SAMPLE');
+
+  export namespace Root {
+    export const SAMPLE:    InjectionToken<any> = new InjectionToken<any>('CORE_PROVIDER_ROOT_SAMPLE');
+  }
 }
 
 
