@@ -1,0 +1,43 @@
+@import 'src/sass/all';
+
+@import '../home.variable.scss';
+
+
+:host{
+  @include pos();
+  @include size(auto, inherit);
+  @include flex-col;
+  min-width: $home-progress-host-max-width;
+  align-items: center;
+  justify-content: space-around;
+  order: 1;
+  &::after{
+    content: '';
+    @include pos(absolute, 0, 50%, 0);
+    @include size(.5px, 100%);
+    background-color: #fff5;
+  }
+  span{
+    @include size(16px);
+    @include inline-flex-row;
+    @include font('Roboto', #fff0, 0rem, 1, bold);
+    align-items: center;
+    justify-content: center;
+    background-color: #fff5;
+    border-radius: 100%;
+    transform: scale(1);
+    transform-origin: center;
+    transition:
+        color $home-transition-duration $home-transition-style,
+        font-size $home-transition-duration $home-transition-style,
+        transform $home-transition-duration $home-transition-style;
+    user-select: none;
+    cursor: pointer;
+    z-index: 2;
+    &.current{
+      color: #fff;
+      font-size: .6rem;
+      transform: scale(2);
+    }
+  }
+}

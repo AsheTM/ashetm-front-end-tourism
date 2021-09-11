@@ -1,22 +1,29 @@
-import { Inject, ModuleWithProviders, NgModule, Optional, Self, SkipSelf } from '@angular/core';
+import { Inject, ModuleWithProviders, NgModule, Optional, Self, SkipSelf, Type } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatIconModule } from '@angular/material/icon';
+import { Action, StoreModule } from '@ngrx/store';
+
 
 import { ESharedProvider } from './shared.enum';
 import { SHARED_PROVIDER_FOR_FEATURE, SHARED_PROVIDER_FOR_ROOT} from './shared.provider';
-import { TSharedFeatureConfiguration, TSharedRootConfiguration } from './shared.type';
+import { TSharedFeatureConfiguration, TSharedFeatureStoreConfiguration, TSharedRootConfiguration } from './shared.type';
 
 
 @NgModule({
   imports:      [
-    CommonModule, 
-    FormsModule, 
-    ReactiveFormsModule
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+
+    MatIconModule
   ],
   exports:      [
-    CommonModule, 
-    FormsModule, 
-    ReactiveFormsModule
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+
+    MatIconModule
   ],
   providers:  [
     {
@@ -62,9 +69,31 @@ export class SharedModule {
     };
   }
 
-  static forFeature({ }: TSharedFeatureConfiguration): ModuleWithProviders<SharedModule> {
+  static forFeature<S = unknown, A extends Action = Action>(
+    configuration:  TSharedFeatureConfiguration,
+    store?:         TSharedFeatureStoreConfiguration<S, A>
+  ): ModuleWithProviders<SharedModule> {
+    const { }: TSharedFeatureConfiguration = configuration;
+    let sharedModule: Type<any> = SharedModule;
+
+    if(store) {
+      @NgModule({
+        imports:  [
+          SharedModule.forFeature(configuration),
+          StoreModule.forFeature<S, A>(store.featureName, store.reducers)
+        ],
+        exports:  [
+          SharedModule,
+          StoreModule
+        ]
+      })
+      class SharedFeatureModule {}
+
+      sharedModule = SharedFeatureModule;
+    }
+
     return {
-      ngModule:   SharedModule,
+      ngModule:   sharedModule,
       providers:  [
         {
           provide:  SHARED_PROVIDER_FOR_FEATURE,

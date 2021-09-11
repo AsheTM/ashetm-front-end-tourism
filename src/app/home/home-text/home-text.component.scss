@@ -1,0 +1,61 @@
+@import 'src/sass/all';
+
+@import '../home.variable.scss';
+
+
+:host{
+  @include flex-col;
+  min-width: $home-text-host-max-width;
+  justify-content: center;
+  padding: $home-text-host-padding 0;
+  border-radius: 3px;
+  margin: auto $home-text-host-margin-horizontal;
+  .carousel{
+    $carousel-height: 96px;
+    $this: &;
+    @include flex-col;
+    height: $carousel-height;
+    overflow: hidden;
+    order: 2;
+    &.title{
+      $carousel-height-title: 48px;
+      height: $carousel-height-title;
+      .carousel-list{
+        @include font('Roboto Black', #fff, 4rem);
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        order: 1;
+        &-item{
+          height: $carousel-height-title;
+          min-height: $carousel-height-title;
+          &.hide{
+            margin-top: -1 * $carousel-height-title;
+          }
+        }
+      }
+    }
+    &-list{
+      @include flex-col;
+      @include font('Roboto', #fff, 1rem, 1.4);
+      width: auto;
+      letter-spacing: 1px;
+      word-spacing: 2px;
+      &-item{
+        min-height: $carousel-height;
+        opacity: 0;
+        transition:
+            margin-top $home-transition-duration $home-transition-style,
+            opacity ($home-transition-duration / 3) $home-transition-style,
+            visibility $home-transition-duration $home-transition-style;
+        &.hide{
+          visibility: hidden;
+          opacity: 0;
+          margin-top: -1 * $carousel-height;
+        }
+        &.show{
+          opacity: 1;
+        }
+      }
+    }
+  }
+}

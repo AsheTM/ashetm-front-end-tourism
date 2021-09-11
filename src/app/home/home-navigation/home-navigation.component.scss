@@ -1,0 +1,40 @@
+@import 'src/sass/all';
+
+@import '../home.variable.scss';
+
+
+:host{
+  @include flex-row;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 3px 0;
+  span{
+    @include size(42px);
+    @include inline-flex-row;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff3;
+    color: #fff;
+    border-radius: 100%;
+    margin: 5px 8px 5px 0;
+    box-sizing: border-box;
+    transition:
+        background-color .15s linear,
+        transform .15s linear;
+    user-select: none;
+    cursor: pointer;
+    &:hover{
+      background-color: #fff8;
+      &:focus{
+        background-color: #fff5;
+        transform: scale(.9);
+      }
+    }
+    &.next{
+      order: 1;
+    }
+    &.previous{
+      order: 2;
+    }
+  }
+}

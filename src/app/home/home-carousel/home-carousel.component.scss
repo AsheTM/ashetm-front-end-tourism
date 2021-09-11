@@ -1,0 +1,93 @@
+@import 'src/sass/all';
+
+@import '../home.variable.scss';
+
+
+:host{
+  @include flex-row;
+  min-height: 400px;
+  align-items: center;
+  padding: 8px 0;
+  margin: 8px 0;
+  .carousel-list{
+    @include size(100vw, 100%);
+    @include flex-row;
+    &-item{
+      $carousel-list-item-margin-horizontal: 8px;
+      $carousel-list-item-width: 200px;
+      @include flex-col;
+      margin: auto $carousel-list-item-margin-horizontal;
+      transition:
+          margin-left $home-transition-duration $home-transition-style,
+          opacity ($home-transition-duration / 2) $home-transition-style,
+          visibility $home-transition-duration $home-transition-style;
+      &.hide{
+        visibility: hidden;
+        opacity: 0;
+        margin-left: -1 * ($carousel-list-item-width + $carousel-list-item-margin-horizontal);
+      }
+      &.show{
+        span{
+          &.country{
+            margin: 3px 8px;
+          }
+          &.image{
+            @include size($carousel-list-item-width, 300px);
+            margin: 5px 1px 0;
+            box-shadow: 0 3px 5px 3px #0005;
+          }
+        }
+      }
+      span{
+        @include inline-flex-row;
+        @include font('Trebuchet MS', #fff); // Roboto Black
+        &.country{
+          font-size: 1.2rem;
+          font-weight: 300;
+          letter-spacing: 1px;
+          margin: 5px 8px;
+          transition: margin $home-transition-duration $home-transition-style;
+          order: 1;
+        }
+        &.rating{
+          @include flex-row;
+          margin: 1px 0;
+          order: 2;
+          @for $s from 1 through 5 {
+            $list: ();
+            @for $i from 1 through $s {
+              $list: append($list, #{unquote('&.star-#{$s} :nth-child(#{$i})')}, $separator: comma);
+            }
+            #{$list}{
+              background-color: #fff;
+            }
+          }
+          &-star{
+            @include size(8px);
+            @include inline-flex-row;
+            background-color: #fff5;
+            border-radius: 100%;
+            margin: 3px;
+          }
+        }
+        &.image{
+          @include size($carousel-list-item-width, 240px);
+          border-radius: 5px;
+          margin: 8px 0 16px;
+          box-shadow: 0 1px 5px 3px #0002;
+          transition:
+              box-shadow $home-transition-duration $home-transition-style,
+              height $home-transition-duration $home-transition-style,
+              margin $home-transition-duration $home-transition-style;
+          overflow: hidden;
+          order: 3;
+          img{
+            width: inherit;
+            object-fit: cover;
+            object-position: center;
+          }
+        }
+      }
+    }
+  }
+}

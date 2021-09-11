@@ -7,6 +7,7 @@ import { CoreModule } from './core';
 import { SharedModule } from './shared';
 
 import { environment } from 'src/environments';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -17,7 +18,9 @@ import { environment } from 'src/environments';
     CoreModule.forRoot(environment.configuration.core),
     SharedModule.forRoot(environment.configuration.shared.root),
 
-    AppRoutingModule
+    AppRoutingModule,
+
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

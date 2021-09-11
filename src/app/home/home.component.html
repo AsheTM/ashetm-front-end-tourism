@@ -1,1 +1,39 @@
-<p>home works!</p>
+
+<ashetm-tourism-home-background [backgrounds]="backgrounds$ | async"
+  [index]="index$ | async"></ashetm-tourism-home-background>
+
+
+<div class="body">
+  <ashetm-tourism-home-progress [index]="index$ | async"
+    [length]="length$ | async"
+    [style.order]="1"></ashetm-tourism-home-progress>
+
+  <div class="body-text"
+    [style.order]="2">
+    <ashetm-tourism-home-text title
+      [index]="index$ | async"
+      [items]="titles$ | async"
+      [style.order]="1"></ashetm-tourism-home-text>
+
+    <ashetm-tourism-home-text [index]="index$ | async"
+      [items]="descriptions$ | async"
+      [style.order]="2"></ashetm-tourism-home-text>
+
+    <button [style.order]="3"
+      (click)="onClickEventHandler()">Explorer</button>
+  </div>
+
+  <div class="body-carousel"
+    [style.order]="3">
+    <ashetm-tourism-home-carousel [index]="index$ | async"
+      [items]="items$ | async"
+      [style.order]="1"></ashetm-tourism-home-carousel>
+
+    <ashetm-tourism-home-navigation #Navigation
+      [index]="index$ | async"
+      [length]="length$ | async"
+      [style.order]="2"
+      (next)="onNextEventHandler($event)"
+      (previous)="onPreviousEventHandler($event)"></ashetm-tourism-home-navigation>
+  </div>
+</div>

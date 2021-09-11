@@ -7,7 +7,7 @@ namespace Route {
     export const HOME:  string  = 'home';
   }
 
-  export const DEFAULT: string  = '/' + ROOT;
+  export const DEFAULT: string  = '/' + Feature.HOME;
 }
 
 

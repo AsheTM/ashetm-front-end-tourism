@@ -1,0 +1,10 @@
+
+<div class="carousel"
+  [class.title]="title">
+  <div class="carousel-list">
+    <div class="carousel-list-item" *ngFor="let item of data; let iterator = index"
+      ngForTrackBy="iterator"
+      [class.hide]="i > iterator"
+      [class.show]="i === iterator">{{ item }}</div>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+
+<div class="carousel">
+  <div class="carousel-list">
+    <div *ngFor="let item of data; let iterator = index"
+      ngForTrackBy="iterator"
+      class="carousel-list-item"
+      [class.hide]="i > iterator"
+      [class.show]="i === iterator">
+      <span class="country">{{ item.country }}</span>
+      <span class="rating"
+        [class]="'star-' + item.rating">
+        <span *ngFor="let _ of ratingMaxStars | homeArray"
+          class="rating-star"></span>
+      </span>
+      <span class="image">
+        <img [alt]="item.image.alt"
+          [src]="item.image.src" />
+      </span>
+    </div>
+  </div>
+</div>

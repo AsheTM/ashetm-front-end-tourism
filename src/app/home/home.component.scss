@@ -1,0 +1,50 @@
+@import 'src/sass/all';
+
+@import './home.variable.scss';
+
+
+:host{
+  @include pos();
+  @include size(100vw, 100vh);
+  @include flex-row;
+  overflow: hidden;
+  .body{
+    @include pos(absolute, 50%, 0, unset, 0);
+    @include size(100%, 80%);
+    @include flex-row;
+    min-height: 400px;
+    align-items: center;
+    transform: translateY(-50%);
+    overflow: hidden;
+    &-text{
+      @include flex-col;
+      min-width: $home-text-host-max-width;
+      justify-content: center;
+      padding: $home-text-host-padding;
+      border-radius: 3px;
+      margin: auto $home-text-host-margin-horizontal;
+      button{
+        all: unset;
+        @include size(96px, 32px);
+        @include flex-row;
+        @include font('Roboto', #fff, 1.2rem, 1.4);
+        align-items: center;
+        justify-content: center;
+        background-color: #59abae;
+        letter-spacing: 2px;
+        padding: 5px 12px;
+        border-radius: 3px;
+        cursor: pointer;
+        order: 3;
+      }
+    }
+    &-carousel{
+      $home-text-host-full-width:
+        calc(#{$home-text-host-max-width} + #{$home-text-host-margin-horizontal} + #{$home-text-host-padding});
+      @include flex-col;
+      max-width: calc(100% - #{$home-text-host-full-width} - #{$home-progress-host-max-width});
+      flex-grow: 1;
+      margin-left: 8px;
+    }
+  }
+}

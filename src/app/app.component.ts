@@ -3,9 +3,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector:         'ashetm-tourism-root',
-  templateUrl:      './app.component.html',
+  template:         '<router-outlet></router-outlet>',
   changeDetection:  ChangeDetectionStrategy.OnPush
 })
-export class AppComponent {
-  title = 'ashetm-front-end-tourism';
-}
+export class AppComponent { }
