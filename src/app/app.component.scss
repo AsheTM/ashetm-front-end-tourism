@@ -1,0 +1,53 @@
+@import 'src/sass/all';
+
+
+:host{
+  .header{
+    @include pos(absolute, 0, 0, unset, 0);
+    @include size(100%, 96px);
+    @include flex-row;
+    z-index: 2;
+    &-logo{
+      img{}
+    }
+    &-links{
+      @include flex-row;
+      @include font('Roboto', $color-secondary, 1.2rem, 1);
+      flex-grow: 1;
+      align-items: center;
+      justify-content: center;
+      a{
+        opacity: .5;
+        color: $color-secondary;
+        text-decoration: unset;
+        padding: 8px 12px;
+        margin: auto 12px;
+        &::after{
+          content: '';
+          @include size(100%, 0px);
+          @include inline-flex-row;
+          background-color: $color-secondary;
+          transition: height .15s ease-in-out;
+        }
+        // & + a, &:not(#{&} + a){
+        // }
+        &:hover{
+          opacity: 1;
+        }
+        &:visited{
+          color: inherit;
+        }
+        &.route-link-active{
+          opacity: 1;
+          &::after{
+            @include size(100%, 3px);
+          }
+        }
+      }
+    }
+  }
+  .body{
+    @include pos();
+    @include size(100vw, 100vh);
+  }
+}

@@ -1,0 +1,16 @@
+
+<div class="header">
+  <div class="header-logo"
+    hidden>
+    <img src="" alt="" />
+  </div>
+
+  <div class="header-links">
+    <a *ngFor="let link of links$ | async"
+      [routerLink]="[link.route]"
+      routerLinkActive="route-link-active"
+      [routerLinkActiveOptions]="{ exact: true }">{{ link.label }}</a>
+  </div>
+</div>
+
+<router-outlet></router-outlet>
