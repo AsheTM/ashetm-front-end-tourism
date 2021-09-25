@@ -1,0 +1,9 @@
+
+<div class="label">
+  <mat-icon *ngIf="icon">{{ icon }}</mat-icon>
+  <span>{{ label }}</span>
+</div>
+
+<input type="text"
+  [formControl]="formControl"
+  [placeholder]="placeholder" />

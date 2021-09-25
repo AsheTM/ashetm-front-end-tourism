@@ -1,0 +1,34 @@
+@import 'src/sass/all';
+
+
+:host{
+  @include flex-col;
+  background-color: $color-secondary;
+  padding: 3px 8px;
+  border-radius: 16px;
+  margin: 12px 8px;
+  .label{
+    @include flex-row;
+    align-items: center;
+    justify-content: flex-start;
+    mat-icon{
+      @include size(auto);
+      color: transparent;
+      font-size: 1.4rem;
+      line-height: 1.4;
+      -webkit-text-stroke-width: 1.5px;
+      -webkit-text-stroke-color: $color-main;
+      margin-right: 5px;
+      order: 1;
+    }
+    span{
+      @include font(Roboto, rgba($color-primary, .8), 1.1rem, 1.4, bold);
+      letter-spacing: .5px;
+      order: 2;
+    }
+  }
+  input{
+    all: unset;
+    @include font(Roboto, rgba($color-primary, .5), 1rem, 1.4);
+  }
+}
