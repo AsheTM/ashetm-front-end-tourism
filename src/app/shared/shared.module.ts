@@ -1,29 +1,21 @@
 import { Inject, ModuleWithProviders, NgModule, Optional, Self, SkipSelf, Type } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatIconModule } from '@angular/material/icon';
 import { Action, StoreModule } from '@ngrx/store';
 
-
+import { SharedComponentsModule } from './shared-components.module';
+import { SharedCommonModule } from './shared-common.module';
+import { SharedDirectivesModule } from './shared-directives.module';
+import { SharedMaterialModule } from './shared-material.module';
 import { ESharedProvider } from './shared.enum';
 import { SHARED_PROVIDER_FOR_FEATURE, SHARED_PROVIDER_FOR_ROOT} from './shared.provider';
 import { TSharedFeatureConfiguration, TSharedFeatureStoreConfiguration, TSharedRootConfiguration } from './shared.type';
 
 
 @NgModule({
-  imports:      [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-
-    MatIconModule
-  ],
   exports:      [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-
-    MatIconModule
+    SharedCommonModule,
+    SharedComponentsModule,
+    SharedDirectivesModule,
+    SharedMaterialModule
   ],
   providers:  [
     {
