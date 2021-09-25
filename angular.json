@@ -12,6 +12,9 @@
         "@schematics/angular:component": {
           "changeDetection": "OnPush",
           "style": "scss"
+        },
+        "@schematics/angular:module": {
+          "routing": true
         }
       },
       "root": "",
