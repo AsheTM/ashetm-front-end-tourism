@@ -1,0 +1,9 @@
+@import './sass/all';
+
+
+.ashetm-tourism-global-highlight,
+.global-hightlight[ashetm][tourism],
+.global-hightlight[ashetm-tourism] {
+  @include inline-flex();
+  color: $color-main;
+}
